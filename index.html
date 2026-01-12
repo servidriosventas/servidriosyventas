@@ -1,394 +1,299 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SERVIDRIOS Y VENTAS GT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVIDRIOS Y VENTAS GT</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GOOGLE FONT (más moderna) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root{
---primary:#008170;
---bg-main:#f4f5f7;
---bg-white:#ffffff;
---bg-gray:#eeeeee;
---text-dark:#2b2b2b;
---text-light:#6b6b6b;
-}
+    <style>
+        :root {
+            --primary: #008170;
+            --dark: #2e2e2e;
+            --gray: #f2f2f2;
+            --white: #ffffff;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-font-family:'Poppins',sans-serif;
-background:var(--bg-main);
-color:var(--text-dark);
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
 
-/* ANIMACION ENTRADA */
-.fade-page{
-opacity:0;
-transform:translateY(30px);
-animation:fade 1.2s ease forwards;
-}
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
 
-@keyframes fade{
-to{opacity:1;transform:translateY(0);}
-}
+        header img {
+            height: 60px;
+        }
 
-/* HEADER */
-header{
-background:var(--bg-white);
-padding:15px 5%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,.06);
-}
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 400;
+            position: relative;
+        }
 
-.logo-container img{height:70px;}
+        nav a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s;
+        }
 
-nav{
-display:flex;
-}
+        nav a:hover::after {
+            width: 100%;
+        }
 
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:var(--text-dark);
-font-weight:500;
-position:relative;
-}
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('img/hero.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
 
-nav a::after{
-content:'';
-width:0;
-height:2px;
-background:var(--primary);
-position:absolute;
-bottom:-5px;
-left:0;
-transition:.3s;
-}
+        .hero-content {
+            animation: fadeUp 1.2s ease;
+        }
 
-nav a:hover::after{width:100%;}
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
-/* MENU MOVIL */
-.menu-toggle{
-display:none;
-font-size:28px;
-cursor:pointer;
-}
+        .hero p {
+            max-width: 800px;
+            margin: auto;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
 
-/* HERO */
-.hero{
-height:80vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-url('Servidrios.jpg') center/cover no-repeat;
-color:white;
-padding:20px;
-}
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-.hero h2{
-font-size:clamp(34px,5vw,56px);
-margin-bottom:20px;
-}
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #00695c;
+        }
 
-.hero p{
-max-width:800px;
-margin:auto;
-margin-bottom:30px;
-color:#e0e0e0;
-}
+        /* SECCIONES */
+        section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-/* BOTON */
-.btn{
-padding:14px 34px;
-background:var(--primary);
-color:white;
-text-decoration:none;
-border-radius:30px;
-font-weight:600;
-transition:.3s;
-display:inline-block;
-}
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            font-weight: 600;
+        }
 
-.btn:hover{
-background:#005f52;
-transform:translateY(-3px);
-}
+        /* QUIENES SOMOS */
+        .about {
+            background: var(--gray);
+        }
 
-/* SECCIONES */
-.section{
-padding:90px 5%;
-background:var(--bg-white);
-max-width:1200px;
-margin:auto;
-}
+        .about p {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
 
-.section-header{
-text-align:center;
-margin-bottom:60px;
-}
+        /* SERVICIOS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
 
-.section-header h3{
-font-size:34px;
-position:relative;
-padding-bottom:15px;
-}
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
 
-.section-header h3::after{
-content:'';
-width:60px;
-height:3px;
-background:var(--primary);
-position:absolute;
-bottom:0;
-left:50%;
-transform:translateX(-50%);
-}
+        .card:hover {
+            transform: translateY(-8px);
+        }
 
-/* TARJETAS */
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
 
-.card{
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,.1);
-transition:.4s;
-}
+        .card div {
+            padding: 20px;
+            text-align: center;
+        }
 
-.card:hover{transform:translateY(-10px);}
+        /* GALERÍA */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-.card img{
-width:100%;
-height:230px;
-object-fit:cover;
-}
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
 
-.card-content{
-padding:25px;
-text-align:center;
-}
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
 
-.card p{color:var(--text-light);}
+        /* CONTACTO */
+        .contact {
+            background: var(--gray);
+            text-align: center;
+        }
 
-/* GALERIA */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+        /* FOOTER */
+        footer {
+            background: #1f1f1f;
+            color: #aaa;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+        }
 
-.gallery img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:10px;
-transition:.4s;
-}
+        /* ANIMACIÓN */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.gallery img:hover{transform:scale(1.05);}
-
-/* CONTACTO */
-.contact-section{
-background:var(--bg-gray);
-padding:80px 5%;
-text-align:center;
-}
-
-/* FOOTER */
-footer{
-background:#eaeaea;
-padding:30px;
-text-align:center;
-color:var(--text-light);
-}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-width:60px;
-height:60px;
-background:#25d366;
-color:white;
-font-size:28px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-box-shadow:0 8px 20px rgba(0,0,0,.3);
-}
-
-/* SCROLL ANIMATION */
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:.8s ease;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-nav{
-position:absolute;
-top:100%;
-left:0;
-width:100%;
-background:white;
-flex-direction:column;
-align-items:center;
-max-height:0;
-overflow:hidden;
-transition:.4s;
-}
-
-nav.active{max-height:300px;}
-
-nav a{margin:15px 0;}
-
-.menu-toggle{display:block;}
-}
-</style>
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+        }
+    </style>
 </head>
-
 <body>
-<div class="fade-page">
 
 <header>
-<div class="logo-container">
-<img src="Logo svr.png">
-</div>
-
-<nav id="navMenu">
-<a href="#inicio">Inicio</a>
-<a href="#quienes">Quiénes Somos</a>
-<a href="#servicios">Servicios</a>
-<a href="#galeria">Galería</a>
-<a href="#contacto">Contacto</a>
-</nav>
-
-<div class="menu-toggle" id="menuToggle">☰</div>
+    <img src="img/logo.png" alt="Servidrios">
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Quiénes Somos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
 </header>
 
 <section id="inicio" class="hero">
-<div>
-<h2>Proyectos y Acabados en Vidrio y Aluminio</h2>
-<p>Brindamos asesoría técnica para sus proyectos con la mejor calidad en Guatemala.</p>
-<a href="#contacto" class="btn">Contáctenos</a>
-</div>
+    <div class="hero-content">
+        <h1>Proyectos y Acabados en Vidrio y Aluminio</h1>
+        <p>Brindamos asesoría técnica para sus proyectos con la mejor calidad en Guatemala.</p>
+        <a href="#contacto" class="btn">Contáctenos</a>
+    </div>
 </section>
 
-<section id="quienes" class="section reveal">
-<div class="section-header">
-<h3>Quiénes Somos</h3>
-</div>
-<p style="text-align:center;color:var(--text-light);max-width:900px;margin:auto;">
-Somos una empresa especializada en soluciones en vidrio y aluminio, comprometidos con calidad y seguridad.
-</p>
+<section id="nosotros" class="about">
+    <h2>Quiénes Somos</h2>
+    <p>
+        Somos una empresa especializada en vidrio y aluminio, ofreciendo soluciones modernas,
+        seguras y personalizadas para proyectos residenciales y comerciales.
+    </p>
 </section>
 
-<section id="servicios" class="section reveal">
-<div class="section-header">
-<h3>Nuestros Servicios</h3>
-</div>
-
-<div class="cards">
-<div class="card">
-<img src="Servidrios (2).jpg">
-<div class="card-content">
-<h4>Vidrio Templado</h4>
-<p>Instalaciones seguras y modernas.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="Servidrios (3).jpg">
-<div class="card-content">
-<h4>Mamparas de Baño</h4>
-<p>Diseños elegantes y funcionales.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="Servidrios (4).jpg">
-<div class="card-content">
-<h4>Ventanería</h4>
-<p>Aluminio de alta precisión.</p>
-</div>
-</div>
-</div>
+<section id="servicios">
+    <h2>Servicios</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="img/galeria1.jpg">
+            <div>Vidrio Templado</div>
+        </div>
+        <div class="card">
+            <img src="img/galeria2.jpg">
+            <div>Mamparas de Baño</div>
+        </div>
+        <div class="card">
+            <img src="img/galeria3.jpg">
+            <div>Ventanería de Aluminio</div>
+        </div>
+    </div>
 </section>
 
-<section id="galeria" class="section reveal">
-<div class="section-header">
-<h3>Galería</h3>
-</div>
-
-<div class="gallery">
-<img src="Servidrios (5).jpg">
-<img src="Servidrios (6).jpg">
-<img src="Servidrios (7).jpg">
-</div>
+<section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery">
+        <img src="img/galeria1.jpg">
+        <img src="img/galeria2.jpg">
+        <img src="img/galeria3.jpg">
+        <img src="img/galeria4.jpg">
+        <img src="img/galeria5.jpg">
+    </div>
 </section>
 
-<section id="contacto" class="contact-section reveal">
-<h3>¿Tiene un proyecto en mente?</h3>
-<p>Escríbanos por WhatsApp para una cotización inmediata.</p>
-<a href="https://wa.me/998171746" class="btn">Solicitar Cotización</a>
+<section id="contacto" class="contact">
+    <h2>Contacto</h2>
+    <p>Escríbenos directamente por WhatsApp</p>
+    <br>
+    <a href="https://wa.me/50200000000" class="btn">WhatsApp</a>
 </section>
 
 <footer>
-© 2026 SERVIDRIOS Y VENTAS GT
+    © 2026 SERVIDRIOS Y VENTAS GT
 </footer>
-
-<a href="https://wa.me/998171746" class="whatsapp">💬</a>
-
-</div>
-
-<script>
-/* MENU MOVIL */
-const toggle=document.getElementById('menuToggle');
-const nav=document.getElementById('navMenu');
-
-toggle.onclick=()=>nav.classList.toggle('active');
-
-/* SCROLL REVEAL */
-const reveals=document.querySelectorAll('.reveal');
-
-function revealScroll(){
-reveals.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-el.classList.add('active');
-}
-});
-}
-
-window.addEventListener('scroll',revealScroll);
-revealScroll();
-</script>
 
 </body>
 </html>
